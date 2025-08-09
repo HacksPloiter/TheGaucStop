@@ -24,8 +24,10 @@ The data warehouse follows a  **star schema**  consisting of:
 -   **Fact Tables**  – Containing quantitative business data linked via foreign keys to dimensions.
 
 Here is the ER diagram:
+![ER Diagram](./ERD.png)
 
 Below is the Data Model:
+![Data Model](./Data_Model.png)
 
 ### 2. ETL Workflow
 - **Tool:**  [Apache Hop](https://hop.apache.org/)
@@ -36,7 +38,28 @@ Below is the Data Model:
     3. **Load**  – Populate dimension tables first, then fact tables.
     4.  **Scheduling**  – Configured for regular execution to keep data updated.
 
-ETL Flow:
+</br>
+
+**ETL Flow - customer dimension table update:**
+
+![Customer Table Update](./customer_update_pipeline.png)
+</br></br></br>
+**ETL Flow - product dimension table update:**
+
+![Product Table Update](./product_update_pipeline.png)
+</br></br></br>
+**ETL Flow - fact table update:**
+
+![Fact Table Update](./fact_loading_pipeline.png)
+</br></br></br>
+**ETL Flow - stream lookup:**
+
+![Stream Lookup](./stream_lookup_pipiline.png)
+</br></br></br>
+
+**ETL Flow - Pipeline testing:**
+
+![Pipeline Testing](./test_pipeline.png)
 
 ### 3. Analytics
 Once the data is in the warehouse, an analytics layer enables reporting and business insights using Tableau:
@@ -47,6 +70,7 @@ Once the data is in the warehouse, an analytics layer enables reporting and busi
 -   **Ad Hoc Analysis**  – The schema supports flexible slicing and dicing of facts by various dimensions (e.g., sales by product, by region, by time period).
 
 Tableau Dashboard:
+![Tableau Dashboard](./sales_forecasting.png)
 
 ## Challenges
 
@@ -57,6 +81,9 @@ Tableau Dashboard:
 5.  While creating visualization, for the date out of range of actual sales, Tableau was considering them as NULL dates. This happened because the populated date in dimension table had extra dates beyond and before the dates of sales. To debug this, I used date filter in the visualization.
 
 ## Key Takeaways
-1.  **Comprehensive Cloud Data Warehouse and Analytics Solution** – Implemented a star schema with dimension and fact tables on oracle cloud infrastructure, designed for scalable analytical querying and business intelligence.
-3.  **Automated ETL with Apache Hop** – Developed fully orchestrated extraction, transformation, and loading process, including incremental loads, error handling, slowly changing dimensions (SCD) handling, and scheduling for continuous updates.
-4.  **Clear Structure & Expandability** – Organized project folders, reusable pipelines, and room for future enhancements like real-time streaming and additional data sources.
+1. Implemented a star schema with dimension and fact tables on Oracle Cloud Infrastructure, designed for scalable analytical querying and business intelligence.
+3. Developed fully orchestrated extraction, transformation, and loading process, including incremental loads, error handling, slowly changing dimensions (SCD) handling, and scheduling for continuous updates.
+4. Organized project folders, reusable pipelines, and room for future enhancements like real-time streaming and additional data sources.
+
+## Author
+Solely developed by [Tanweer Ashif](https://tanweerashif.com).
