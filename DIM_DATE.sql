@@ -1,0 +1,9 @@
+CREATE TABLE ADMIN.DIM_DATE (
+  DATE_ID        DATE PRIMARY KEY,
+  DAY            NUMBER(2),
+  MONTH          NUMBER(2),
+  MONTH_NAME     VARCHAR2(20),
+  QUARTER        NUMBER(1),
+  YEAR           NUMBER(4),
+  WEEKDAY        VARCHAR2(10)
+);
